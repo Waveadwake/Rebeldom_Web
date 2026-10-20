@@ -64,6 +64,27 @@ while IFS= read -r file; do
     status=1
   fi
 
+  # Explicit allowlist: unknown files are rejected even if they are not a
+  # known secret/archive extension. Add new legitimate site files here AND to
+  # the Pages allowlist in .github/workflows/deploy.yml.
+  case "$file" in
+    .gitattributes|.gitignore|.nojekyll|README.md|LICENSE|CNAME|\
+    index.html|posts.html|about.html|404.html|\
+    feed.xml|sitemap.xml|robots.txt|site.webmanifest|\
+    .github/workflows/deploy.yml|\
+    .githooks/check-repo.sh|.githooks/pre-commit|.githooks/pre-push|\
+    assets/css/style.css|assets/js/site.js|\
+    assets/images/*.svg|assets/images/*.png|assets/images/*.jpg|\
+    assets/images/*.jpeg|assets/images/*.webp|assets/images/*.ico|\
+    post/*.html)
+      ;;
+    *)
+      echo "[repo-guard] 阻止：文件不在公开仓库白名单中：$file" >&2
+      echo "如果是正常站点文件，请先更新 .githooks/check-repo.sh 和 deploy.yml 的白名单。" >&2
+      status=1
+      ;;
+  esac
+
   # The guard script necessarily contains the token patterns themselves.
   if [ "$file" != ".githooks/check-repo.sh" ]; then
     secret_re='-----BEGIN [A-Z0-9 ]*PRIVATE KEY-----|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{50,}|xox[baprs]-[0-9A-Za-z-]{20,}|AIza[0-9A-Za-z_-]{35}|sk_live_[0-9A-Za-z]{20,}'

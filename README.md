@@ -166,8 +166,10 @@ Actions 只从 `main` 分支部署；PR 只会运行仓库检查，不会发布�
 仓库带有三层防护：
 
 1. **`.gitignore`**：忽略 `.env`、私钥、数据库、日志、浏览器配置、截图、压缩包等本地文件。
-2. **本地 Git hooks**：`pre-commit` 和 `pre-push` 会调用 `.githooks/check-repo.sh`，拦截敏感文件名、常见密钥格式、超大文件。
+2. **本地 Git hooks**：`pre-commit` 和 `pre-push` 会调用 `.githooks/check-repo.sh`，拦截敏感文件名、常见密钥格式、超大文件，以及不在仓库白名单内的未知文件。
 3. **GitHub Actions guard**：每次 push / PR 都重新检查；检查失败时不会构建或发布 Pages。构建使用显式白名单，即使仓库里有额外文件，也不会自动公开。
+
+> 新增合法页面或资源（例如 `projects.html`、新字体、新图片格式）时，需要同时把它加入 `.githooks/check-repo.sh` 的仓库白名单，以及 `.github/workflows/deploy.yml` 中需要发布的文件列表。
 
 在新克隆的仓库中启用本地 hooks：
 
