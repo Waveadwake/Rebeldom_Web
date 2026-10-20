@@ -1,0 +1,4 @@
+#!/bin/sh
+# Run before each commit. Install with: git config core.hooksPath .githooks
+repo_root=$(git rev-parse --show-toplevel 2>/dev/null) || exit 0
+exec sh "$repo_root/.githooks/check-repo.sh" --staged

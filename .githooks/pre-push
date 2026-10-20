@@ -1,0 +1,5 @@
+#!/bin/sh
+# Run before pushing. This cannot catch a commit made elsewhere, so the
+# GitHub Actions guard re-checks every push and the Pages build uses an allowlist.
+repo_root=$(git rev-parse --show-toplevel 2>/dev/null) || exit 0
+exec sh "$repo_root/.githooks/check-repo.sh" --tree

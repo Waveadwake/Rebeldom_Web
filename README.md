@@ -18,7 +18,8 @@
 - **阅读体验**：阅读进度条、自动生成的文章目录、复制代码、复制链接、上一篇 / 下一篇
 - **基础 SEO**：每页独立 meta、Open Graph、Twitter Card、`sitemap.xml`、`robots.txt`、RSS
 - **Giscus 评论**：按需加载、跟随站点深浅色；配置好仓库后即可使用
-- **自动部署**：内置 GitHub Actions 工作流，推送到 `main` 即发布
+- **自动部署**：GitHub Actions 推送到 `main` 即发布；带仓库内容守卫和白名单产物
+- **仓库防护**：本地 hooks + CI 检查，阻止密钥、临时文件、数据库和超大文件进入发布流程
 - **无障碍细节**：跳转链接、键盘焦点、语义标签、`prefers-reduced-motion` 支持
 
 评论之外没有访问统计和后台，字体与插图全部本地加载。Giscus 只在文章页接近评论区时才请求第三方脚本。
@@ -31,7 +32,13 @@
 web/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml          # GitHub Pages 自动部署
+│       └── deploy.yml          # Pages 部署、仓库守卫与发布白名单
+├── .githooks/
+│   ├── check-repo.sh           # 检查敏感文件、密钥和超大文件
+│   ├── pre-commit
+│   └── pre-push
+├── .gitattributes              # 统一换行格式
+├── .gitignore                  # 阻止本地文件进入仓库
 ├── .nojekyll                   # 让 GitHub Pages 直接发布静态文件
 ├── index.html                  # 首页
 ├── posts.html                  # 全部文章 / 搜索 / 筛选
@@ -43,7 +50,7 @@ web/
 ├── site.webmanifest            # 添加到主屏幕所需的站点信息
 ├── assets/
 │   ├── css/style.css           # 全站样式与设计变量
-│   ├── js/site.js              # 主题、导航、筛选、目录、复制等
+│   ├── js/site.js              # 主题、导航、筛选、评论等
 │   └── images/                 # SVG 插图、图标、社交分享图
 └── post/
     ├── slow-is-a-skill.html
@@ -138,30 +145,58 @@ https://waveadwake.github.io/Rebeldom_Web/
 
 > `.github`、`.nojekyll` 和 `.gitattributes` 是部署与换行规范所需的文件，已经包含在仓库中，不需要删除。
 
-### 其他部署方式
+### 部署白名单
 
-如果之后想把站点放进另一个仓库，也可以保留 `web/` 子目录，并把 `web/.github/workflows/deploy.yml` 放到目标仓库根目录的 `.github/workflows/` 下；工作流会自动识别 `web/`。使用 GitHub Actions 之外的分支部署时，站点内容需要位于仓库根目录或 `docs/`。
+工作流不会把整个仓库原样发布。`_site` 目录只复制以下公开内容：
 
-### 方法二：保留仓库里的 `web` 子目录
+```text
+index.html  posts.html  about.html  404.html
+feed.xml  sitemap.xml  robots.txt  site.webmanifest
+assets/  post/  .nojekyll  CNAME（可选）
+```
 
-如果你已经有一个仓库，希望把网站放在 `web/` 里：
+`README`、`LICENSE`、`.github/`、`.githooks/`、`.gitignore`、`.gitattributes` 和临时文件不会进入线上站点。如果以后新增顶层页面，需要同时把它加入 `.github/workflows/deploy.yml` 的白名单。
 
-1. 把本目录中的 `web` 文件夹完整放进仓库。
-2. 把 `web/.github/workflows/deploy.yml` 复制到**仓库根目录**的 `.github/workflows/` 下，例如命名为 `deploy-blog.yml`。
-3. 在 Pages 设置中保持 **Source = GitHub Actions**，然后提交推送。
+Actions 只从 `main` 分支部署；PR 只会运行仓库检查，不会发布。
 
-工作流会自动判断站点在仓库根目录还是 `web/` 子目录，无需修改路径。
+---
 
-### 方法三：从分支直接发布（不使用 Actions）
+## 仓库安全检查
 
-GitHub Pages 的 “Deploy from a branch” 只支持仓库根目录或 `/docs` 目录。
+仓库带有三层防护：
 
-- 把 `web/` 中的**内容**放到仓库根目录，或重命名为 `docs/`；
-- 在 **Settings → Pages → Source** 选择 **Deploy from a branch**；
-- 选择 `main` 分支和 `/(root)`（或 `/docs`）；
-- 保存后等待发布。
+1. **`.gitignore`**：忽略 `.env`、私钥、数据库、日志、浏览器配置、截图、压缩包等本地文件。
+2. **本地 Git hooks**：`pre-commit` 和 `pre-push` 会调用 `.githooks/check-repo.sh`，拦截敏感文件名、常见密钥格式、超大文件。
+3. **GitHub Actions guard**：每次 push / PR 都重新检查；检查失败时不会构建或发布 Pages。构建使用显式白名单，即使仓库里有额外文件，也不会自动公开。
 
-这种方式不使用 `.github/workflows/deploy.yml`，但 `.nojekyll` 仍然建议保留。**更推荐方法一**，因为 Actions 的发布记录、回滚和环境信息都更清楚。
+在新克隆的仓库中启用本地 hooks：
+
+```bash
+git config core.hooksPath .githooks
+```
+
+手动检查全部已跟踪文件：
+
+```bash
+sh .githooks/check-repo.sh --tree
+```
+
+### 还需要在 GitHub 上开启的一层
+
+打开仓库的 **Settings → Code security and analysis**，建议启用：
+
+- **Secret scanning**
+- **Push protection**
+
+这是 GitHub 服务端对已知密钥格式的拦截，比本地 hook 更可靠。地址：
+
+```text
+https://github.com/Waveadwake/Rebeldom_Web/settings/security_analysis
+```
+
+> 本地 hook 可以被 `--no-verify` 绕过；GitHub Actions 守卫发生在推送之后，只能阻止继续发布，不能撤回已经上传的提交。如果确实误传了密码或 Token，第一步永远是**撤销或轮换密钥**，然后再清理 Git 历史。
+
+当前仓库已检查：已跟踪文件与提交历史中没有临时截图、浏览器配置、`.env`、私钥、数据库或常见 API Token。站点中的公开邮箱、GitHub 用户名和 Giscus ID 是为了功能而有意公开的。
 
 ---
 

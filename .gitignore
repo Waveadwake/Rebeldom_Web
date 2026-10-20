@@ -1,12 +1,76 @@
-# Local previews and browser profiles
+# ---------------------------------------------------------------------------
+# Local-only files. Anything listed here should never be committed or deployed.
+# The pre-commit hook and the GitHub Actions guard enforce this too.
+# ---------------------------------------------------------------------------
+
+# Secrets, credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+.aws/
+.ssh/
+.netrc
+.npmrc
+.pypirc
+.git-credentials
+credentials*.json
+secrets*.json
+
+# Databases and data dumps
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.sql
+
+# Archives that could hide private material
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+
+# Local previews, tests and browser automation
 .edge-profile/
+.playwright/
+.cache/
 _preview-*
+_preview*
+_screenshot-*
+_screenshot*
+_test-*
+_tmp-*
+
+# Node/tooling and generated output
+node_modules/
+.venv/
+venv/
+dist/
+build/
+_site/
 
 # Operating system files
 .DS_Store
+.DS_Store?
+._*
 Thumbs.db
+ehthumbs.db
+desktop.ini
 
-# Editor files
+# Editor and temporary files
 .vscode/
 .idea/
 *.log
+*.bak
+*.backup
+*.swp
+*.swo
+*~
+*.tmp
+*.temp
