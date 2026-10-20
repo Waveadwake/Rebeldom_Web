@@ -71,42 +71,34 @@ python -m http.server 8000
 
 ---
 
-## 启用 Giscus 评论
+## Giscus 评论
 
-文章页已经放好评论区，但它默认隐藏，必须在 `assets/js/site.js` 中填入 Giscus 的分类 ID 后才会出现并加载脚本。当前已填写：
+文章页已经接入并启用了 Giscus，配置位于 `assets/js/site.js`：
 
 ```js
 const GISCUS = {
   repo: "Waveadwake/Rebeldom_Web",
   repoId: "R_kgDOVQ00yw",
   category: "Announcements",
-  categoryId: "", // ← 还差这一项
+  categoryId: "DIC_kwDOVQ00y84DJKsE",
   mapping: "pathname",
+  inputPosition: "bottom",
   language: "zh-CN"
 };
 ```
 
-完成下面四步即可：
+- 访客使用 GitHub 账号登录后评论，不需要站内注册。
+- 评论会保存到仓库的 GitHub Discussions，可在 GitHub 里直接审核、置顶或删除。
+- 评论区只在文章页接近底部时按需加载，并跟随站点的深色 / 浅色模式。
+- 每篇文章按 URL 路径映射到独立的 Discussion；`pathname` 映射意味着更换域名或路径后需要重新关联评论。
 
-1. 打开仓库 **Settings → General → Features**，勾选 **Discussions**。
-2. 安装 Giscus App，并授权给 `Waveadwake/Rebeldom_Web`：<https://github.com/apps/giscus>
-3. 打开 <https://giscus.app>，仓库填写 `Waveadwake/Rebeldom_Web`，分类选择 **Announcements**。页面生成的代码里会包含类似下面的 ID：
+如果以后更换仓库、分类或想关闭评论：
 
-   ```html
-   data-category-id="DIC_kwDOVQ00yw4C..."
-   ```
+- 修改 `GISCUS.repo`、`repoId`、`category`、`categoryId`；
+- 把 `categoryId` 设为空字符串即可关闭评论区并停止加载 Giscus；
+- 新的分类 ID 可以在 <https://giscus.app> 生成。
 
-4. 把这个 `DIC_...` 填入 `assets/js/site.js` 的 `categoryId`，然后：
-
-   ```bash
-   git add .
-   git commit -m "feat: enable giscus comments"
-   git push
-   ```
-
-评论区需要访客用 GitHub 账号登录，不提供站内注册。评论会保存为仓库的 GitHub Discussions，可以直接在 GitHub 里审核或删除；如果以后改了仓库名或分类名，记得同步修改 `GISCUS` 配置。
-
-> 未填写有效的 `DIC_...` 时，评论区保持隐藏，也不会向 `giscus.app` 发起任何请求。
+GitHub App 已授权给 `Waveadwake/Rebeldom_Web`，仓库的 Discussions 也已开启。
 
 ---
 
@@ -330,9 +322,9 @@ GitHub Actions 会自动发布。也可以把常用的文章结构抽成模板�
 
 搜索完全在浏览器里完成，读取的是 `posts.html` 中每篇文章的 `data-search` 属性。新增文章时需要手动补上该属性。没有后端，也没有全文索引。
 
-**评论怎么启用？**
+**评论怎么启用或关闭？**
 
-评论区已经接入 Giscus，但需要在 GitHub 开启 Discussions、安装 Giscus App，并把分类 ID 填入 `assets/js/site.js`。完整步骤见上文「启用 Giscus 评论」。
+评论已经启用，配置在 `assets/js/site.js`。把 `categoryId` 设为空字符串即可关闭；更换仓库或分类时，同步更新 `GISCUS` 里的对应字段。
 
 **字体为什么在不同系统上略有差异？**
 

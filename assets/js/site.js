@@ -27,16 +27,15 @@
   };
 
   /* ---------- Giscus comments ----------
-     Setup: enable GitHub Discussions, install the giscus app for this repository,
-     then copy the Announcements category ID (starts with "DIC_") from
-     https://giscus.app and paste it below. Until a valid ID is present, the
-     comments section stays hidden and no third-party script is loaded. */
+     GitHub Discussions and the giscus app are configured for this repository.
+     Comments load only when the reader approaches the article's comment area. */
   const GISCUS = {
     repo: "Waveadwake/Rebeldom_Web",
     repoId: "R_kgDOVQ00yw",
     category: "Announcements",
-    categoryId: "",
+    categoryId: "DIC_kwDOVQ00y84DJKsE",
     mapping: "pathname",
+    inputPosition: "bottom",
     language: "zh-CN"
   };
 
@@ -139,7 +138,7 @@
         "data-strict": "0",
         "data-reactions-enabled": "1",
         "data-emit-metadata": "0",
-        "data-input-position": "top",
+        "data-input-position": GISCUS.inputPosition,
         "data-theme": root.dataset.theme === "dark" ? "dark" : "light",
         "data-lang": GISCUS.language,
         "data-loading": "lazy"
