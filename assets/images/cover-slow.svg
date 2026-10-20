@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">慢，是一种需要练习的能力 — 文章封面</title>
+  <desc id="desc">抽象的山野插画：陶土色落日悬在米色天空上，层层绿色山丘与一条浅色小径。</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eee3d0"/>
+      <stop offset="1" stop-color="#e5d3b9"/>
+    </linearGradient>
+    <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a1a78c"/>
+      <stop offset="1" stop-color="#818e74"/>
+    </linearGradient>
+    <linearGradient id="near" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a6150"/>
+      <stop offset="1" stop-color="#263b30"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#sky)"/>
+  <rect x="36" y="36" width="1128" height="728" fill="none" stroke="#24352b" stroke-opacity=".22"/>
+
+  <g fill="#314138" font-family="'Cascadia Mono', Consolas, monospace" font-size="12" letter-spacing="3">
+    <text x="72" y="92">FIELD NOTE / 01</text>
+    <text x="1128" y="92" text-anchor="end">ON SLOWNESS</text>
+  </g>
+
+  <circle cx="916" cy="277" r="212" fill="#bc5a3b"/>
+  <circle cx="916" cy="277" r="260" fill="none" stroke="#bc5a3b" stroke-opacity=".18"/>
+
+  <g stroke="#7b6f5b" stroke-opacity=".25">
+    <path d="M72 390h430"/>
+    <path d="M72 405h315"/>
+    <path d="M72 420h210"/>
+  </g>
+
+  <path d="M36 505c140-83 265-82 390-15 117-68 245-73 357-5 102-58 213-63 381 12v310H36Z" fill="url(#far)"/>
+  <path d="M36 589c153-80 298-82 436 1 130-64 267-66 395 7 117-48 223-36 297-1v204H36Z" fill="#647962"/>
+  <path d="M36 663c172-77 347-70 500 16 153-63 321-44 475 27 60-25 116-31 189-8v102H36Z" fill="url(#near)"/>
+
+  <path d="M569 800c-7-48 5-90 35-127 33-41 51-69 57-108 4-27 20-42 45-44-28 51-32 91-55 127-37 58-41 97-34 152Z" fill="#dbcbb0"/>
+  <path d="M641 800c-3-35 5-65 29-94 27-33 41-62 46-92" fill="none" stroke="#b9a88d" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/>
+
+  <g fill="none" stroke="#1e3126" stroke-linecap="round" opacity=".7">
+    <path d="M1008 800c-4-54 2-91 17-121M1027 738c14-11 25-17 37-21M1023 707c-11-12-18-24-21-38" stroke-width="2"/>
+    <path d="M1084 800c-5-39-2-70 8-94M1096 747c10-9 20-14 31-17" stroke-width="1.7"/>
+    <path d="M127 800c0-40 7-67 19-89M148 754c12-8 22-11 31-13" stroke-width="1.8"/>
+  </g>
+
+  <g fill="#2f4537">
+    <ellipse cx="1074" cy="682" rx="55" ry="18" opacity=".8"/>
+    <ellipse cx="1104" cy="654" rx="30" ry="11" opacity=".6"/>
+    <ellipse cx="150" cy="690" rx="38" ry="13" opacity=".7"/>
+  </g>
+
+  <g fill="#efe5d3" font-family="'Cascadia Mono', Consolas, monospace" font-size="11" letter-spacing="2.6">
+    <text x="72" y="730">SLOW IS A SKILL,</text>
+    <text x="72" y="749" fill="#c9c2b0">NOT A PERSONALITY.</text>
+  </g>
+
+  <rect width="1200" height="800" filter="url(#grain)" opacity=".05" style="mix-blend-mode:multiply"/>
+</svg>

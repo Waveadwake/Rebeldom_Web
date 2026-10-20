@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">在杭州，走一条没有目的的路 — 文章封面</title>
+  <desc id="desc">浅灰绿色背景上的抽象城市地图：细密的街道线条、河道、陶土色虚线步行路线与两枚圆形地点标记。</desc>
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="#dbe0d4"/>
+  <rect x="36" y="36" width="1128" height="728" fill="none" stroke="#24352b" stroke-opacity=".22"/>
+
+  <g fill="#314138" font-family="'Cascadia Mono', Consolas, monospace" font-size="12" letter-spacing="3">
+    <text x="72" y="92">FIELD NOTE / 04</text>
+    <text x="1128" y="92" text-anchor="end">HANGZHOU, ON FOOT</text>
+  </g>
+
+  <!-- Abstract blocks -->
+  <g fill="#aab6a8" opacity=".5">
+    <rect x="100" y="153" width="184" height="80"/>
+    <rect x="326" y="134" width="98" height="130"/>
+    <rect x="820" y="155" width="156" height="86"/>
+    <rect x="1010" y="306" width="126" height="152"/>
+    <rect x="144" y="532" width="160" height="95"/>
+    <rect x="390" y="631" width="211" height="62"/>
+    <rect x="868" y="590" width="194" height="113"/>
+    <rect x="674" y="114" width="70" height="83"/>
+  </g>
+
+  <g fill="none" stroke="#637563" stroke-opacity=".42">
+    <path d="M72 300h1056"/>
+    <path d="M72 478h1056"/>
+    <path d="M72 594h1056"/>
+    <path d="M232 120v608"/>
+    <path d="M477 120v608"/>
+    <path d="M704 120v608"/>
+    <path d="M950 120v608"/>
+    <path d="M72 205h1056"/>
+    <path d="M887 120v608"/>
+  </g>
+
+  <!-- Waterway -->
+  <path d="M66 435c143-28 248-14 343 33 130 65 245 65 373 16 140-54 256-53 356-25v120c-120-36-230-27-354 19-130 48-268 52-390-6C278 538 177 526 66 552Z" fill="#b8c6ba"/>
+  <path d="M66 435c143-28 248-14 343 33 130 65 245 65 373 16 140-54 256-53 356-25" fill="none" stroke="#f1f0e6" stroke-opacity=".55"/>
+
+  <!-- Walking route -->
+  <path d="M207 623c50-78 109-93 170-117 92-36 128-79 147-139 23-71 99-94 161-48 61 45 109 50 192 25 78-24 118-3 132 53" fill="none" stroke="#b65335" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 12"/>
+  <g fill="#b65335">
+    <circle cx="207" cy="623" r="11"/>
+    <circle cx="207" cy="623" r="22" fill="none" stroke="#b65335" stroke-opacity=".4"/>
+    <circle cx="1009" cy="397" r="11"/>
+    <circle cx="1009" cy="397" r="22" fill="none" stroke="#b65335" stroke-opacity=".4"/>
+  </g>
+
+  <!-- Landmarks -->
+  <g fill="none" stroke="#24352b" stroke-width="2">
+    <path d="M572 351c0-28 23-51 51-51s51 23 51 51v43h-102Z"/>
+    <path d="M574 349h98" stroke-opacity=".4"/>
+    <path d="M620 300v-24M598 320l-14-15M642 320l14-15" stroke-linecap="round" stroke-opacity=".55"/>
+  </g>
+  <g fill="#425548" font-family="'Cascadia Mono', Consolas, monospace" font-size="9" letter-spacing="1.6" opacity=".9">
+    <text x="623" y="443">拱宸桥</text>
+  </g>
+
+  <!-- Compass -->
+  <g transform="translate(1065 651)" fill="none" stroke="#314138" stroke-opacity=".5">
+    <circle r="48"/>
+    <circle r="32" stroke-dasharray="2 7"/>
+    <path d="M0-20 8 8 0 2-8 8Z" fill="#314138" stroke="none"/>
+    <text x="0" y="-58" text-anchor="middle" fill="#314138" font-family="'Cascadia Mono', Consolas, monospace" font-size="10" stroke="none" letter-spacing="2">N</text>
+  </g>
+
+  <g fill="#314138" font-family="'Cascadia Mono', Consolas, monospace" font-size="11" letter-spacing="2.6">
+    <text x="72" y="728">WALK WITHOUT A DESTINATION.</text>
+    <text x="72" y="747" fill="#6f796f">THE STREET WILL DO THE REST.</text>
+  </g>
+
+  <rect width="1200" height="800" filter="url(#grain)" opacity=".055" style="mix-blend-mode:multiply"/>
+</svg>

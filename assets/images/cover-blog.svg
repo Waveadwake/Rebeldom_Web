@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">把博客搬回自己的院子 — 文章封面</title>
+  <desc id="desc">深绿色背景上的抽象庭院插画：陶土色太阳、米色围墙与拱门、庭院植物和一条通向门内的小径。</desc>
+  <defs>
+    <linearGradient id="doorLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4d5ac"/>
+      <stop offset="1" stop-color="#d8a878"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d2d25"/>
+      <stop offset="1" stop-color="#111b16"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <clipPath id="doorClip">
+      <path d="M518 636V421c0-78 58-141 130-141s130 63 130 141v215Z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="800" fill="#203129"/>
+  <rect x="36" y="36" width="1128" height="728" fill="none" stroke="#f2e8d6" stroke-opacity=".18"/>
+
+  <g fill="#d7cdbb" font-family="'Cascadia Mono', Consolas, monospace" font-size="12" letter-spacing="3">
+    <text x="72" y="92">FIELD NOTE / 02</text>
+    <text x="1128" y="92" text-anchor="end">A ROOM OF ONE'S OWN</text>
+  </g>
+
+  <circle cx="956" cy="276" r="166" fill="#bd5c3c"/>
+  <circle cx="956" cy="276" r="219" fill="none" stroke="#bd5c3c" stroke-opacity=".2"/>
+  <circle cx="956" cy="276" r="276" fill="none" stroke="#f2e8d6" stroke-opacity=".08"/>
+
+  <!-- Courtyard wall -->
+  <path d="M36 556h1128v244H36Z" fill="#d9cbb2"/>
+  <path d="M36 556h1128" stroke="#f3e9d7" stroke-width="2" stroke-opacity=".45"/>
+  <g stroke="#24352b" stroke-opacity=".22">
+    <path d="M120 556v244M284 556v244M448 556v244M752 556v244M916 556v244M1080 556v244"/>
+    <path d="M36 622h1128M36 690h1128M36 758h1128"/>
+  </g>
+
+  <!-- Doorway -->
+  <path d="M506 636V421c0-84 63-152 142-152s142 68 142 152v215Z" fill="#1a2a22" stroke="#24352b" stroke-width="2"/>
+  <g clip-path="url(#doorClip)">
+    <rect x="506" y="269" width="284" height="367" fill="url(#doorLight)"/>
+    <circle cx="675" cy="423" r="72" fill="#bc5a3b"/>
+    <path d="M506 505c64-35 117-34 168 3 47-32 84-34 116-14v142H506Z" fill="#657a62"/>
+    <path d="M506 556c54-28 107-15 156 13 40-20 78-22 128-2v69H506Z" fill="#334c3b"/>
+    <path d="M608 636c-8-41 4-73 34-102 27-27 35-52 35-76 10-6 20-5 28 3-15 36-23 65-48 91-27 28-34 54-30 84Z" fill="#d9cbb2"/>
+  </g>
+  <path d="M506 636V421c0-84 63-152 142-152s142 68 142 152v215" fill="none" stroke="#24352b" stroke-width="2"/>
+  <path d="M520 636V424c0-73 55-139 128-139s128 66 128 139v212" fill="none" stroke="#f4e8d4" stroke-opacity=".38"/>
+
+  <!-- Path -->
+  <path d="M580 636h136l62 164H518Z" fill="#bda98c" opacity=".7"/>
+  <path d="M623 636h48l28 164h-105Z" fill="#e0cfb4" opacity=".55"/>
+
+  <!-- Plants -->
+  <g stroke="#16271e" stroke-linecap="round">
+    <path d="M345 636c5-92 8-155 4-213M349 512c-38-42-64-52-94-62M349 553c38-48 75-62 110-77M347 460c-16-40-15-72 0-102" fill="none" stroke-width="4"/>
+    <path d="M849 636c-4-73-2-133 8-184M855 524c35-29 61-38 87-45M855 569c-29-27-51-35-75-38" fill="none" stroke-width="3"/>
+    <path d="M252 636c-2-31 4-53 14-71M1027 636c-3-38 3-65 16-87" fill="none" stroke-width="2"/>
+  </g>
+  <g fill="#2b4736">
+    <ellipse cx="269" cy="477" rx="76" ry="21" opacity=".88"/>
+    <ellipse cx="434" cy="500" rx="86" ry="20" opacity=".78"/>
+    <ellipse cx="299" cy="430" rx="49" ry="14" opacity=".66"/>
+    <ellipse cx="923" cy="505" rx="64" ry="16" opacity=".8"/>
+    <ellipse cx="784" cy="546" rx="49" ry="12" opacity=".6"/>
+  </g>
+
+  <!-- Foreground sill -->
+  <path d="M36 636h1128" stroke="#24352b" stroke-width="2"/>
+  <path d="M36 646h1128" stroke="#24352b" stroke-opacity=".28"/>
+
+  <g fill="#2b3d31" font-family="'Cascadia Mono', Consolas, monospace" font-size="11" letter-spacing="2.6">
+    <text x="72" y="736">BUILD A SMALL PLACE</text>
+    <text x="72" y="755" fill="#596c5d">THAT BELONGS TO YOU.</text>
+  </g>
+
+  <g transform="translate(1090 700)">
+    <rect width="46" height="46" fill="#b65335"/>
+    <text x="23" y="31" text-anchor="middle" fill="#f7f0e2" font-family="'Songti SC', 'SimSun', serif" font-size="22">院</text>
+  </g>
+
+  <rect width="1200" height="800" filter="url(#grain)" opacity=".06" style="mix-blend-mode:screen"/>
+</svg>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">一份不完美但可持续的阅读方法 — 文章封面</title>
+  <desc id="desc">暖沙色背景上的抽象静物：一本摊开的书，深绿色封面、米色书页和一枚陶土色书签，后面是一轮巨大的浅色圆。</desc>
+  <defs>
+    <linearGradient id="pageLeft" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f7f0e2"/>
+      <stop offset="1" stop-color="#e6d9c3"/>
+    </linearGradient>
+    <linearGradient id="pageRight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#eee3d0"/>
+      <stop offset="1" stop-color="#fbf6ea"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="#d9c8ab"/>
+  <rect x="36" y="36" width="1128" height="728" fill="none" stroke="#24352b" stroke-opacity=".22"/>
+
+  <g fill="#314138" font-family="'Cascadia Mono', Consolas, monospace" font-size="12" letter-spacing="3">
+    <text x="72" y="92">FIELD NOTE / 03</text>
+  </g>
+
+  <circle cx="901" cy="270" r="236" fill="#eee3d0" opacity=".8"/>
+  <circle cx="901" cy="270" r="292" fill="none" stroke="#24352b" stroke-opacity=".12"/>
+  <text x="1128" y="92" text-anchor="end" fill="#314138" opacity=".78" font-family="'Cascadia Mono', Consolas, monospace" font-size="12" letter-spacing="3">READING, IMPERFECTLY</text>
+
+  <g stroke="#7e715c" stroke-opacity=".3">
+    <path d="M72 252h224"/>
+    <path d="M72 267h165"/>
+    <path d="M72 282h112"/>
+  </g>
+
+  <!-- Open book -->
+  <path d="M217 569c120-43 232-41 336 5 126-48 245-47 352 2v49c-113-40-228-41-352 7-108-46-219-49-336-7Z" fill="#23362b"/>
+  <path d="M253 548c109-35 208-31 300 11v86c-97-42-197-45-300-13Z" fill="url(#pageLeft)"/>
+  <path d="M553 559c93-42 192-46 300-11v84c-103-32-203-29-300 13Z" fill="url(#pageRight)"/>
+  <path d="M553 560c108-45 211-42 300-11" fill="none" stroke="#b9aa91" stroke-opacity=".5"/>
+
+  <!-- Page lines -->
+  <g fill="none" stroke="#8b806c" stroke-linecap="round" opacity=".35">
+    <path d="M289 579c82-22 165-19 233 8" stroke-width="2"/>
+    <path d="M289 600c76-20 148-17 211 6" stroke-width="1.4"/>
+    <path d="M289 617c83-19 158-15 219 7" stroke-width="1.4"/>
+    <path d="M289 634c58-14 118-11 177 5" stroke-width="1.4"/>
+    <path d="M579 591c71-24 146-27 210-6" stroke-width="2"/>
+    <path d="M579 611c77-21 154-20 213 2" stroke-width="1.4"/>
+    <path d="M579 628c61-17 126-15 192 2" stroke-width="1.4"/>
+  </g>
+
+  <!-- Bookmark -->
+  <path d="M737 493h35v141l-18-15-17 15Z" fill="#b65335"/>
+
+  <!-- Small reading marks -->
+  <g fill="none" stroke="#314138" stroke-width="1.7" stroke-linecap="round" opacity=".65">
+    <path d="M939 527c7-9 14-9 21 0M970 510c5-6 10-6 15 0"/>
+  </g>
+
+  <!-- Cup -->
+  <g transform="translate(969 601)">
+    <ellipse cx="43" cy="87" rx="69" ry="13" fill="#24352b" opacity=".14"/>
+    <path d="M0 0h86v45c0 29-19 47-43 47S0 74 0 45Z" fill="#f4ecde"/>
+    <path d="M85 18h13c20 0 27 13 22 29-4 13-16 20-33 18" fill="none" stroke="#f4ecde" stroke-width="8"/>
+    <path d="M22 32c7-10 14-10 21 0M47 32c7-10 14-10 21 0" fill="none" stroke="#a58f73" stroke-width="1.6" opacity=".55"/>
+  </g>
+
+  <!-- Base line -->
+  <path d="M72 696h1056" stroke="#24352b" stroke-opacity=".3"/>
+
+  <g fill="#314138" font-family="'Cascadia Mono', Consolas, monospace" font-size="11" letter-spacing="2.6">
+    <text x="72" y="731">A LITTLE, BUT OFTEN.</text>
+    <text x="72" y="750" fill="#6e6b5e">LEAVE ROOM FOR NOT FINISHING.</text>
+  </g>
+
+  <g transform="translate(1092 700)">
+    <circle cx="23" cy="23" r="23" fill="none" stroke="#24352b" stroke-opacity=".35"/>
+    <text x="23" y="31" text-anchor="middle" fill="#24352b" font-family="'Songti SC', 'SimSun', serif" font-size="21">读</text>
+  </g>
+
+  <rect width="1200" height="800" filter="url(#grain)" opacity=".06" style="mix-blend-mode:multiply"/>
+</svg>

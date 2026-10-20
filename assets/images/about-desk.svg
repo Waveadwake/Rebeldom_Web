@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 900" role="img" aria-labelledby="title desc">
+  <title id="title">一张书桌的静物</title>
+  <desc id="desc">俯视的编辑式静物插画：摊开的笔记本、一枚小照片、陶土色铅笔、咖啡杯和一小枝植物，放在暖灰色的桌面上。</desc>
+  <defs>
+    <linearGradient id="desk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ddd9cc"/>
+      <stop offset="1" stop-color="#c9c9bc"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <clipPath id="photo">
+      <rect x="176" y="215" width="158" height="132"/>
+    </clipPath>
+  </defs>
+
+  <rect width="760" height="900" fill="url(#desk)"/>
+  <rect x="28" y="28" width="704" height="844" fill="none" stroke="#24352b" stroke-opacity=".18"/>
+
+  <!-- Sunlight -->
+  <path d="M452 28h280v318L396 750 300 700Z" fill="#f6eedc" opacity=".38"/>
+
+  <!-- Top marks -->
+  <g fill="#39483d" font-family="'Cascadia Mono', Consolas, monospace" font-size="8.5" letter-spacing="2">
+    <text x="52" y="65">DESK / LATE AFTERNOON</text>
+    <text x="708" y="65" text-anchor="end">HANGZHOU</text>
+  </g>
+
+  <!-- Notebook shadow -->
+  <ellipse cx="385" cy="556" rx="278" ry="220" fill="#4c5147" opacity=".16"/>
+
+  <!-- Notebook -->
+  <g transform="rotate(-3 380 470)">
+    <path d="M120 241c72-21 154-22 249-1l-12 336c-91-21-169-19-247 2Z" fill="#f2eadb"/>
+    <path d="M391 238c85-17 167-12 249 14l-10 324c-81-24-159-27-247-9Z" fill="#f8f1e3"/>
+    <path d="M369 240c8-4 16-4 23-1l-5 337c-6-4-13-3-20 0Z" fill="#d8cbb6"/>
+    <path d="M120 241c72-21 154-22 249-1M391 238c85-17 167-12 249 14" fill="none" stroke="#bcae96" stroke-opacity=".55"/>
+
+    <!-- Pages lines -->
+    <g stroke="#9c907a" stroke-linecap="round" opacity=".45">
+      <path d="M153 393h182" stroke-width="1.6"/>
+      <path d="M153 412h128" stroke-width="1.2"/>
+      <path d="M153 431h167" stroke-width="1.2"/>
+      <path d="M153 450h104" stroke-width="1.2"/>
+      <path d="M153 496h172" stroke-width="1.6"/>
+      <path d="M153 515h117" stroke-width="1.2"/>
+      <path d="M153 534h151" stroke-width="1.2"/>
+
+      <path d="M424 380h165" stroke-width="1.6"/>
+      <path d="M424 399h104" stroke-width="1.2"/>
+      <path d="M424 418h150" stroke-width="1.2"/>
+      <path d="M424 437h78" stroke-width="1.2"/>
+      <path d="M424 486h170" stroke-width="1.6"/>
+      <path d="M424 505h124" stroke-width="1.2"/>
+      <path d="M424 524h144" stroke-width="1.2"/>
+    </g>
+
+    <!-- Inserted photograph -->
+    <g clip-path="url(#photo)">
+      <rect x="176" y="215" width="158" height="132" fill="#e7c9a0"/>
+      <circle cx="285" cy="259" r="28" fill="#b65335"/>
+      <path d="M176 309c36-30 65-28 95-4 33-25 48-25 63-8v50H176Z" fill="#526957"/>
+      <path d="M176 326c29-12 58-7 83 4 23-11 48-10 75 2v15H176Z" fill="#263b30"/>
+    </g>
+    <rect x="176" y="215" width="158" height="132" fill="none" stroke="#8e826d" stroke-opacity=".45"/>
+    <g transform="translate(176 215)">
+      <rect width="158" height="132" fill="none" stroke="#f7f0e2" stroke-opacity=".42" transform="translate(5 5) scale(.937)"/>
+    </g>
+
+    <!-- Corner mark -->
+    <g fill="#9b8e78" font-family="'Cascadia Mono', Consolas, monospace" font-size="7" letter-spacing="1.4">
+      <text x="153" y="558">09 / 2026</text>
+      <text x="594" y="558" text-anchor="end">PAGE 27</text>
+    </g>
+  </g>
+
+  <!-- Pencil -->
+  <g transform="translate(111 647) rotate(-67)">
+    <rect width="257" height="17" fill="#b65335"/>
+    <path d="M0 0v17l-27-8.5Z" fill="#e7dac4"/>
+    <path d="m-27 0 9 8.5-9 8.5Z" fill="#313f36"/>
+    <rect x="232" width="25" height="17" fill="#d9cbb2"/>
+    <rect x="243" width="14" height="17" fill="#c2b296"/>
+  </g>
+
+  <!-- Cup -->
+  <g transform="translate(540 594)">
+    <ellipse cx="78" cy="150" rx="83" ry="19" fill="#4c5147" opacity=".14"/>
+    <ellipse cx="78" cy="113" rx="78" ry="28" fill="#d8cbb6"/>
+    <path d="M8 71h140v43c0 35-31 61-70 61S8 149 8 114Z" fill="#f7f0e2"/>
+    <ellipse cx="78" cy="71" rx="70" ry="24" fill="#e9ddc8"/>
+    <ellipse cx="78" cy="71" rx="53" ry="16" fill="#6e4b36"/>
+    <path d="M148 83h13c28 0 37 19 28 40-7 16-22 23-40 21" fill="none" stroke="#f7f0e2" stroke-width="11"/>
+    <path d="M58 43c-8-15 9-20 3-35M90 43c-8-15 9-20 3-35" fill="none" stroke="#7d7f72" stroke-width="1.6" stroke-linecap="round" opacity=".32"/>
+  </g>
+
+  <!-- Plant sprig -->
+  <g transform="translate(654 100)">
+    <path d="M0 0c15 98 53 179 55 300" fill="none" stroke="#3f5745" stroke-width="2.4" stroke-linecap="round"/>
+    <g fill="#71836e">
+      <ellipse cx="16" cy="61" rx="29" ry="9" transform="rotate(35 16 61)"/>
+      <ellipse cx="-9" cy="106" rx="27" ry="8" transform="rotate(-38 -9 106)"/>
+      <ellipse cx="37" cy="137" rx="32" ry="9" transform="rotate(30 37 137)"/>
+      <ellipse cx="5" cy="190" rx="25" ry="8" transform="rotate(-42 5 190)"/>
+      <ellipse cx="50" cy="239" rx="27" ry="8" transform="rotate(26 50 239)"/>
+      <ellipse cx="29" cy="285" rx="21" ry="7" transform="rotate(-22 29 285)"/>
+    </g>
+  </g>
+
+  <!-- Footer mark -->
+  <g fill="#39483d" font-family="'Cascadia Mono', Consolas, monospace" font-size="8" letter-spacing="1.7">
+    <text x="52" y="844">MADE SLOWLY, WITH CARE.</text>
+    <text x="708" y="844" text-anchor="end">30.2741° N / 120.1551° E</text>
+  </g>
+
+  <rect width="760" height="900" filter="url(#grain)" opacity=".06" style="mix-blend-mode:multiply"/>
+</svg>

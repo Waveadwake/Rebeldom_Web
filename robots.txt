@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /404.html
 
-Sitemap: https://waveadwake.github.io/Rebeldem_Web/sitemap.xml
+Sitemap: https://waveadwake.github.io/Rebeldom_Web/sitemap.xml

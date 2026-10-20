@@ -2,7 +2,7 @@
 
 一套完整的、零依赖的中文个人博客模板。使用原生 HTML、CSS 和少量 JavaScript 写成，不需要 Node.js、不需要构建，克隆下来就能发布到 GitHub Pages。
 
-**当前配置**：仓库 [Waveadwake/Rebeldem_Web](https://github.com/Waveadwake/Rebeldem_Web)，站点地址 `https://waveadwake.github.io/Rebeldem_Web/`。
+**当前配置**：仓库 [Waveadwake/Rebeldom_Web](https://github.com/Waveadwake/Rebeldom_Web)，站点地址 `https://waveadwake.github.io/Rebeldom_Web/`。
 
 **仍是示例内容**：杭州、独立设计师 / 前端开发者等个人经历，以及 4 篇示例文章和首页短句。博客名、署名、邮箱、GitHub 仓库和站点地址都已按你的信息替换。
 
@@ -52,7 +52,7 @@ web/
     └── city-walk.html
 ```
 
-所有站内链接都是**相对路径**。因此部署在项目子路径 `https://waveadwake.github.io/Rebeldem_Web/` 下，样式和站内跳转也能正常工作。
+所有站内链接都是**相对路径**。因此部署在项目子路径 `https://waveadwake.github.io/Rebeldom_Web/` 下，样式和站内跳转也能正常工作。
 
 ---
 
@@ -73,32 +73,43 @@ python -m http.server 8000
 
 ## 发布到 GitHub Pages
 
-### 方法一：把 `web` 目录当作仓库根目录（推荐）
+### 方法一：从这个 `web` 目录推送（推荐）
 
-仓库已经创建好：[Waveadwake/Rebeldem_Web](https://github.com/Waveadwake/Rebeldem_Web)。目前是空仓库，按下面的步骤把站点推上去即可。
+本目录已经初始化为 Git 仓库，并配置好了远程地址：
 
-1. 在本机的 `web` 目录执行：
+```text
+origin  https://github.com/Waveadwake/Rebeldom_Web.git
+branch  main
+```
 
-   ```bash
-   cd web
-   git init -b main
-   git add .
-   git commit -m "chore: initial personal blog"
-   git remote add origin https://github.com/Waveadwake/Rebeldem_Web.git
-   git push -u origin main
-   ```
+以后每次修改完网站，只需要：
 
-2. 打开仓库的 **Settings → Pages**，把 **Build and deployment → Source** 设为 **GitHub Actions**。
-3. 打开 **Actions** 标签，等待 “Deploy blog to GitHub Pages” 跑完。首次部署通常需要一到两分钟。如果第一次运行发生在开启 Pages 之前并且失败了，开启 Pages 后点一次 **Re-run jobs** 即可。
-4. 发布地址是：
+```bash
+cd web
+git add .
+git commit -m "update: 更新首页内容"
+git push
+```
 
-   ```text
-   https://waveadwake.github.io/Rebeldem_Web/
-   ```
+首次推送（如果还没有远端 `main` 分支）使用：
 
-工作流会直接把仓库根目录作为 Pages 产物发布，而后端不需要额外配置。若之后修改仓库名，记得同步替换全站的站点根地址。
+```bash
+git push -u origin main
+```
 
-> **隐藏文件**：`.github`、`.nojekyll` 是部署所需文件。用 GitHub 网页拖拽上传时可能忽略隐藏目录，建议使用上面的 Git 命令。
+推送完成后，打开仓库的 **Settings → Pages**，把 **Build and deployment → Source** 设为 **GitHub Actions**。然后打开 **Actions** 标签，等待 “Deploy blog to GitHub Pages” 跑完。
+
+发布地址是：
+
+```text
+https://waveadwake.github.io/Rebeldom_Web/
+```
+
+> `.github`、`.nojekyll` 和 `.gitattributes` 是部署与换行规范所需的文件，已经包含在仓库中，不需要删除。
+
+### 其他部署方式
+
+如果之后想把站点放进另一个仓库，也可以保留 `web/` 子目录，并把 `web/.github/workflows/deploy.yml` 放到目标仓库根目录的 `.github/workflows/` 下；工作流会自动识别 `web/`。使用 GitHub Actions 之外的分支部署时，站点内容需要位于仓库根目录或 `docs/`。
 
 ### 方法二：保留仓库里的 `web` 子目录
 
@@ -130,10 +141,10 @@ GitHub Pages 的 “Deploy from a branch” 只支持仓库根目录或 `/docs` 
 当前项目已经统一配置为：
 
 ```text
-https://waveadwake.github.io/Rebeldem_Web/
+https://waveadwake.github.io/Rebeldom_Web/
 ```
 
-对应仓库：`https://github.com/Waveadwake/Rebeldem_Web`。
+对应仓库：`https://github.com/Waveadwake/Rebeldom_Web`。
 
 如果之后改了仓库名，需要把全站的站点根地址一并替换。涉及：
 
@@ -152,8 +163,8 @@ https://waveadwake.github.io/Rebeldem_Web/
 - 署名：`Waveadwake`
 - 邮箱：`Rebeldom@foxmail.com`
 - GitHub：`https://github.com/Waveadwake`
-- 仓库：`https://github.com/Waveadwake/Rebeldem_Web`
-- 站点地址：`https://waveadwake.github.io/Rebeldem_Web/`
+- 仓库：`https://github.com/Waveadwake/Rebeldom_Web`
+- 站点地址：`https://waveadwake.github.io/Rebeldom_Web/`
 
 仍是示例内容、可按需修改：
 
