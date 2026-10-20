@@ -17,11 +17,11 @@
 - **文章归档**：按主题筛选、即时搜索、支持 `?tag=阅读&q=城市` 形式的链接
 - **阅读体验**：阅读进度条、自动生成的文章目录、复制代码、复制链接、上一篇 / 下一篇
 - **基础 SEO**：每页独立 meta、Open Graph、Twitter Card、`sitemap.xml`、`robots.txt`、RSS
-- **无跟踪、无 Cookie、无第三方脚本**：字体与插图全部本地加载
+- **Giscus 评论**：按需加载、跟随站点深浅色；配置好仓库后即可使用
 - **自动部署**：内置 GitHub Actions 工作流，推送到 `main` 即发布
 - **无障碍细节**：跳转链接、键盘焦点、语义标签、`prefers-reduced-motion` 支持
 
-没有评论系统、访问统计和后台。这些都可以以后按需接入，不影响现在的静态发布。
+评论之外没有访问统计和后台，字体与插图全部本地加载。Giscus 只在文章页接近评论区时才请求第三方脚本。
 
 ---
 
@@ -68,6 +68,45 @@ python -m http.server 8000
 然后打开 <http://localhost:8000>。也可以使用 VS Code 的 Live Server 扩展。
 
 > 建议通过本地服务器预览，而不是直接双击 HTML 文件。站点本身可以 `file://` 打开，但浏览器的剪贴板权限、历史记录等行为会更接近真实环境。
+
+---
+
+## 启用 Giscus 评论
+
+文章页已经放好评论区，但它默认隐藏，必须在 `assets/js/site.js` 中填入 Giscus 的分类 ID 后才会出现并加载脚本。当前已填写：
+
+```js
+const GISCUS = {
+  repo: "Waveadwake/Rebeldom_Web",
+  repoId: "R_kgDOVQ00yw",
+  category: "Announcements",
+  categoryId: "", // ← 还差这一项
+  mapping: "pathname",
+  language: "zh-CN"
+};
+```
+
+完成下面四步即可：
+
+1. 打开仓库 **Settings → General → Features**，勾选 **Discussions**。
+2. 安装 Giscus App，并授权给 `Waveadwake/Rebeldom_Web`：<https://github.com/apps/giscus>
+3. 打开 <https://giscus.app>，仓库填写 `Waveadwake/Rebeldom_Web`，分类选择 **Announcements**。页面生成的代码里会包含类似下面的 ID：
+
+   ```html
+   data-category-id="DIC_kwDOVQ00yw4C..."
+   ```
+
+4. 把这个 `DIC_...` 填入 `assets/js/site.js` 的 `categoryId`，然后：
+
+   ```bash
+   git add .
+   git commit -m "feat: enable giscus comments"
+   git push
+   ```
+
+评论区需要访客用 GitHub 账号登录，不提供站内注册。评论会保存为仓库的 GitHub Discussions，可以直接在 GitHub 里审核或删除；如果以后改了仓库名或分类名，记得同步修改 `GISCUS` 配置。
+
+> 未填写有效的 `DIC_...` 时，评论区保持隐藏，也不会向 `giscus.app` 发起任何请求。
 
 ---
 
@@ -291,9 +330,9 @@ GitHub Actions 会自动发布。也可以把常用的文章结构抽成模板�
 
 搜索完全在浏览器里完成，读取的是 `posts.html` 中每篇文章的 `data-search` 属性。新增文章时需要手动补上该属性。没有后端，也没有全文索引。
 
-**能加评论吗？**
+**评论怎么启用？**
 
-可以。推荐使用 [giscus](https://giscus.app/) 这类基于 GitHub Discussions 的评论组件，在文章页底部加一段脚本即可。接入第三方服务前，请考虑隐私与加载速度。
+评论区已经接入 Giscus，但需要在 GitHub 开启 Discussions、安装 Giscus App，并把分类 ID 填入 `assets/js/site.js`。完整步骤见上文「启用 Giscus 评论」。
 
 **字体为什么在不同系统上略有差异？**
 

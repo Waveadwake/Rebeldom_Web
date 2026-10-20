@@ -26,7 +26,30 @@
     }
   };
 
+  /* ---------- Giscus comments ----------
+     Setup: enable GitHub Discussions, install the giscus app for this repository,
+     then copy the Announcements category ID (starts with "DIC_") from
+     https://giscus.app and paste it below. Until a valid ID is present, the
+     comments section stays hidden and no third-party script is loaded. */
+  const GISCUS = {
+    repo: "Waveadwake/Rebeldom_Web",
+    repoId: "R_kgDOVQ00yw",
+    category: "Announcements",
+    categoryId: "",
+    mapping: "pathname",
+    language: "zh-CN"
+  };
+
   /* ---------- Theme ---------- */
+  function syncGiscusTheme(theme) {
+    const iframe = document.querySelector("iframe.giscus-frame");
+    if (!iframe || !iframe.contentWindow) return;
+    iframe.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: theme === "dark" ? "dark" : "light" } } },
+      "https://giscus.app"
+    );
+  }
+
   function updateThemeColour() {
     const themeColour = getComputedStyle(root).getPropertyValue("--bg").trim();
     const meta = document.querySelector('meta[name="theme-color"]');
@@ -48,6 +71,8 @@
       button.setAttribute("title", "切换到" + nextTheme + "模式");
       button.setAttribute("aria-pressed", String(theme === "dark"));
     });
+
+    syncGiscusTheme(theme);
   }
 
   document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
@@ -80,6 +105,82 @@
       (colourScheme.matches ? "dark" : "light"),
     false
   );
+
+  /* ---------- Giscus comments (lazy-loaded) ---------- */
+  const giscusHost = document.querySelector("[data-giscus]");
+  const giscusCategoryId = (GISCUS.categoryId || "").trim();
+
+  if (giscusHost && giscusCategoryId.startsWith("DIC_")) {
+    const commentsSection = giscusHost.closest(".comments-section");
+    if (commentsSection) commentsSection.hidden = false;
+
+    let giscusLoaded = false;
+
+    function loadGiscus() {
+      if (giscusLoaded) return;
+      giscusLoaded = true;
+
+      const loading = document.createElement("p");
+      loading.className = "giscus-loading";
+      loading.textContent = "正在载入评论…";
+      giscusHost.appendChild(loading);
+
+      const script = document.createElement("script");
+      script.src = "https://giscus.app/client.js";
+      script.async = true;
+      script.crossOrigin = "anonymous";
+
+      const attributes = {
+        "data-repo": GISCUS.repo,
+        "data-repo-id": GISCUS.repoId,
+        "data-category": GISCUS.category,
+        "data-category-id": giscusCategoryId,
+        "data-mapping": GISCUS.mapping,
+        "data-strict": "0",
+        "data-reactions-enabled": "1",
+        "data-emit-metadata": "0",
+        "data-input-position": "top",
+        "data-theme": root.dataset.theme === "dark" ? "dark" : "light",
+        "data-lang": GISCUS.language,
+        "data-loading": "lazy"
+      };
+
+      Object.keys(attributes).forEach(function (name) {
+        script.setAttribute(name, attributes[name]);
+      });
+
+      giscusHost.appendChild(script);
+
+      const iframeObserver = new MutationObserver(function () {
+        const iframe = giscusHost.querySelector("iframe.giscus-frame");
+        if (!iframe) return;
+        loading.remove();
+        syncGiscusTheme(root.dataset.theme);
+        iframeObserver.disconnect();
+      });
+      iframeObserver.observe(giscusHost, { childList: true, subtree: true });
+
+      // If the widget cannot load, avoid leaving a permanent loading message.
+      window.setTimeout(function () {
+        loading.remove();
+      }, 12000);
+    }
+
+    if ("IntersectionObserver" in window) {
+      const giscusObserver = new IntersectionObserver(
+        function (entries) {
+          if (entries.some(function (entry) { return entry.isIntersecting; })) {
+            loadGiscus();
+            giscusObserver.disconnect();
+          }
+        },
+        { rootMargin: "400px 0px" }
+      );
+      giscusObserver.observe(commentsSection || giscusHost);
+    } else {
+      loadGiscus();
+    }
+  }
 
   /* ---------- Header ---------- */
   const header = document.querySelector("[data-header]");
