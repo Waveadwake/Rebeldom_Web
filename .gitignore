@@ -1,0 +1,12 @@
+# Local previews and browser profiles
+.edge-profile/
+_preview-*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.log

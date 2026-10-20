@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rebeldom · Waveadwake 的个人博客</title>
+    <link>https://waveadwake.github.io/Rebeldem_Web/</link>
+    <description>关于设计、代码、阅读与城市漫步的长信。不追赶热点，只记录那些值得被慢慢记住的日常。</description>
+    <language>zh-CN</language>
+    <copyright>© 2026 Waveadwake</copyright>
+    <lastBuildDate>Mon, 12 Oct 2026 09:00:00 +0800</lastBuildDate>
+    <atom:link href="https://waveadwake.github.io/Rebeldem_Web/feed.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://waveadwake.github.io/Rebeldem_Web/assets/images/og-cover.png</url>
+      <title>Rebeldom · Waveadwake 的个人博客</title>
+      <link>https://waveadwake.github.io/Rebeldem_Web/</link>
+    </image>
+
+    <item>
+      <title>慢，是一种需要练习的能力</title>
+      <link>https://waveadwake.github.io/Rebeldem_Web/post/slow-is-a-skill.html</link>
+      <guid isPermaLink="true">https://waveadwake.github.io/Rebeldem_Web/post/slow-is-a-skill.html</guid>
+      <pubDate>Mon, 12 Oct 2026 09:00:00 +0800</pubDate>
+      <category>生活</category>
+      <author>Rebeldom@foxmail.com (Waveadwake)</author>
+      <description><![CDATA[我们总以为慢下来是休息，其实它更像一门手艺：需要反复练习，才会在加速的世界里保持自己的节奏。]]></description>
+    </item>
+
+    <item>
+      <title>把博客搬回自己的院子</title>
+      <link>https://waveadwake.github.io/Rebeldem_Web/post/blog-return.html</link>
+      <guid isPermaLink="true">https://waveadwake.github.io/Rebeldem_Web/post/blog-return.html</guid>
+      <pubDate>Mon, 28 Sep 2026 09:00:00 +0800</pubDate>
+      <category>随笔</category>
+      <author>Rebeldom@foxmail.com (Waveadwake)</author>
+      <description><![CDATA[在别人的广场上住了太久，我想重新拥有一块可以自己决定如何生长的地方。关于独立博客、写作与一个极简静态站的选择。]]></description>
+    </item>
+
+    <item>
+      <title>一份不完美但可持续的阅读方法</title>
+      <link>https://waveadwake.github.io/Rebeldem_Web/post/reading-method.html</link>
+      <guid isPermaLink="true">https://waveadwake.github.io/Rebeldem_Web/post/reading-method.html</guid>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 +0800</pubDate>
+      <category>阅读</category>
+      <author>Rebeldom@foxmail.com (Waveadwake)</author>
+      <description><![CDATA[放弃“读完”的执念之后，读书反而变成了一件可以长久做下去的事。三本书并行、一句话笔记和每月回顾，一种不追求完美的方法。]]></description>
+    </item>
+
+    <item>
+      <title>在杭州，走一条没有目的的路</title>
+      <link>https://waveadwake.github.io/Rebeldem_Web/post/city-walk.html</link>
+      <guid isPermaLink="true">https://waveadwake.github.io/Rebeldem_Web/post/city-walk.html</guid>
+      <pubDate>Sun, 30 Aug 2026 16:00:00 +0800</pubDate>
+      <category>城市</category>
+      <author>Rebeldom@foxmail.com (Waveadwake)</author>
+      <description><![CDATA[从拱宸桥出发，沿着运河一直走。不看地图，不设终点，只把下午交给街道。一条没有目的地的杭州散步路线。]]></description>
+    </item>
+  </channel>
+</rss>
